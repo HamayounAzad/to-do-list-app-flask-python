@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Sign Up — ToList{% endblock %}
+{% block content %}
+  <section class="auth-wrap">
+    <div class="auth-card" role="region" aria-label="Sign up">
+      <header class="auth-header">
+        <h1 class="brand">Create Account</h1>
+        <p class="subtitle">Join ToList</p>
+      </header>
+      <form id="signup-form" class="auth-form" novalidate>
+        <div class="field">
+          <label for="su-username">Username</label>
+          <input id="su-username" name="username" type="text" autocomplete="username" required placeholder="yourname">
+          <div class="error" id="su-username-error" aria-live="polite"></div>
+        </div>
+        <div class="field">
+          <label for="su-email">Email</label>
+          <input id="su-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+          <div class="error" id="su-email-error" aria-live="polite"></div>
+        </div>
+        <div class="field password-field">
+          <label for="su-password">Password</label>
+          <input id="su-password" name="password" type="password" autocomplete="new-password" required placeholder="••••••••">
+          <div class="error" id="su-password-error" aria-live="polite"></div>
+        </div>
+        <div class="field password-field">
+          <label for="su-confirm">Confirm Password</label>
+          <input id="su-confirm" name="confirm" type="password" autocomplete="new-password" required placeholder="••••••••">
+          <div class="error" id="su-confirm-error" aria-live="polite"></div>
+        </div>
+        <div id="su-status" class="status" role="status" aria-live="polite"></div>
+        <button id="signup-btn" type="submit" class="primary-btn">Create Account</button>
+      </form>
+      <footer class="auth-footer">
+        <a class="help-link" href="{{ url_for('login_page') }}">Already have an account? Sign in</a>
+      </footer>
+    </div>
+  </section>
+{% endblock %}
+
+{% block scripts %}
+  <script defer src="{{ url_for('static', filename='js/signup.js') }}"></script>
+{% endblock %}

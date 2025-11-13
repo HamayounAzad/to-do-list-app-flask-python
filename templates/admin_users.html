@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Admin — Users{% endblock %}
+{% block content %}
+  <section class="auth-wrap" style="max-width:960px; width:100%;">
+    <div class="auth-card" role="region" aria-label="Admin Users">
+      <header class="auth-header" style="text-align:left;">
+        <h1 class="brand">Users</h1>
+        <div class="row" style="gap:12px; margin-top:8px;">
+          <input id="au-search" type="text" placeholder="Search username/email" aria-label="Search users" />
+          <select id="au-role" aria-label="Filter by role">
+            <option value="">All roles</option>
+            <option value="customer">Customers</option>
+            <option value="user">Users</option>
+            <option value="admin">Admins</option>
+          </select>
+          <button id="au-refresh" class="primary-btn">Refresh</button>
+        </div>
+      </header>
+      <div id="au-status" class="status" role="status" aria-live="polite"></div>
+      <div class="user-table">
+        <table id="au-table" style="width:100%; border-collapse:collapse;">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Display Name</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block scripts %}
+  <script defer src="{{ url_for('static', filename='js/admin.js') }}"></script>
+{% endblock %}
+

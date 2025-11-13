@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Sign In — ToList{% endblock %}
+{% block content %}
+  <button class="theme-floating" type="button" data-theme-toggle aria-label="Toggle theme">Theme</button>
+  <section class="auth-wrap">
+    <div class="auth-card" role="region" aria-label="Sign in">
+      <header class="auth-header">
+        <h1 class="brand">ToList</h1>
+        <p class="subtitle">Organize smarter. Start with a sign in.</p>
+      </header>
+      <form id="login-form" class="auth-form" novalidate>
+        <div class="field">
+          <label for="username">Email or Username</label>
+          <input id="username" name="username" type="text" autocomplete="username" required placeholder="you@example.com">
+          <div class="error" id="username-error" aria-live="polite"></div>
+        </div>
+        <div class="field password-field">
+          <label for="password">Password</label>
+          <div class="password-input">
+            <input id="password" name="password" type="password" autocomplete="current-password" required placeholder="••••••••">
+            <button type="button" id="toggle-password" class="icon-btn" aria-label="Show password" aria-controls="password">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 5C5 5 1 12 1 12s4 7 11 7 11-7 11-7-4-7-11-7Zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10Z"/></svg>
+            </button>
+          </div>
+          <div class="error" id="password-error" aria-live="polite"></div>
+        </div>
+        <div class="field row">
+          <label class="checkbox">
+            <input type="checkbox" id="remember" name="remember">
+            <span>Remember me</span>
+          </label>
+          <a class="help-link" href="#" aria-label="Password help">Need help?</a>
+        </div>
+        <div id="auth-status" class="status" role="status" aria-live="polite"></div>
+        <button id="sign-in" type="submit" class="primary-btn">Sign In</button>
+      </form>
+      <footer class="auth-footer">
+        <a class="help-link" href="{{ url_for('signup_page') }}">Create account</a>
+      </footer>
+    </div>
+  </section>
+{% endblock %}
+
+{% block scripts %}
+  <script defer src="{{ url_for('static', filename='js/auth.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}ToList — App{% endblock %}
+{% block content %}
+  <header class="app-header">
+    <h1 class="brand">ToList</h1>
+    <div class="header-actions">
+      <button class="theme-toggle" type="button" data-theme-toggle>Theme</button>
+      <nav class="user-menu" aria-label="User menu">
+        <button id="logout" class="icon-btn" title="Logout" aria-label="Logout">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path fill="currentColor" d="M10 4a2 2 0 0 0-2 2v3h2V6h8v12h-8v-3H8v3a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-8Z"/>
+            <path fill="currentColor" d="M11 11H3v2h8v3l5-4-5-4v3Z"/>
+          </svg>
+        </button>
+        <button id="profile" class="icon-btn" title="Profile settings" aria-label="Profile settings">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4.67 0-8 2.33-8 5v1h16v-1c0-2.67-3.33-5-8-5Z"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="composer">
+    <input id="new-task" type="text" placeholder="Add a task…" aria-label="New task">
+    <input id="new-desc" type="text" placeholder="Description (optional)" aria-label="Task description">
+    <input id="new-due" type="date" aria-label="Due date">
+    <select id="new-category" aria-label="Category">
+      <option value="">Category</option>
+      <option>Work</option>
+      <option>Personal</option>
+      <option>Home</option>
+      <option>Study</option>
+      <option>Other</option>
+    </select>
+    <select id="new-priority" aria-label="Priority">
+      <option value="medium">Priority: Medium</option>
+      <option value="low">Priority: Low</option>
+      <option value="high">Priority: High</option>
+    </select>
+    <input id="new-assign" type="text" placeholder="Assignee username" aria-label="Assign to">
+    <label class="checkbox"><input type="checkbox" id="new-remind"> <span>Remind</span></label>
+    <button id="add-task" class="primary-btn">Add</button>
+  </section>
+
+  <section class="toolbar" aria-label="Task controls">
+    <div class="filters">
+      <button data-filter="all" class="chip active">All</button>
+      <button data-filter="active" class="chip">Active</button>
+      <button data-filter="completed" class="chip">Completed</button>
+    </div>
+    <div class="search">
+      <input id="search" type="search" placeholder="Search…" aria-label="Search tasks">
+    </div>
+    <select id="sort" aria-label="Sort tasks">
+      <option value="position">Sort by Position</option>
+      <option value="due">Sort by Due Date</option>
+      <option value="created">Sort by Created</option>
+    </select>
+    <button id="clear-completed" class="ghost-btn">Clear Completed</button>
+    <div id="app-status" class="status" role="status" aria-live="polite"></div>
+  </section>
+
+  <section class="list-wrap">
+    <ul id="task-list" class="task-list" aria-label="Todo list"></ul>
+  </section>
+
+  <footer class="app-footer">
+    <div id="items-left" aria-live="polite">0 items left</div>
+    <div id="analytics" class="analytics">
+      <div class="card" id="a-total">Total: 0</div>
+      <div class="card" id="a-added">Added this week: 0</div>
+      <div class="card" id="a-completed-week">Completed this week: 0</div>
+      <div class="card" id="a-completed-today">Completed today: 0</div>
+    </div>
+  </footer>
+{% endblock %}
+
+{% block scripts %}
+  <script defer src="{{ url_for('static', filename='js/storage.js') }}"></script>
+  <script defer src="{{ url_for('static', filename='js/app.js') }}"></script>
+{% endblock %}

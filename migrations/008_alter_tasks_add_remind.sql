@@ -1,0 +1,3 @@
+ALTER TABLE tasks
+  ADD COLUMN remind TINYINT(1) NOT NULL DEFAULT 0 AFTER due_date;
+
